@@ -40,9 +40,6 @@ export default function StatsPage() {
       dates.push(toLocalISOString(curr))
       curr.setDate(curr.getDate() + 1)
     }
-    console.log("Final date:", dates.at(-1))
-    console.log("Start:", start)
-    console.log("End:", end)
     return { dates, start, end }
   }
 
@@ -84,7 +81,6 @@ export default function StatsPage() {
           date,
           count: firestoreGroups[date] || 0,
         }))
-        console.log("Final Heatmap Data:", finalHeatmapData.at(-1))
         setHeatmapData(finalHeatmapData)
         const activeDays = Object.keys(firestoreGroups).length
         setAverageAppliesPerDay(activeDays > 0 ? docs.length / activeDays : 0)

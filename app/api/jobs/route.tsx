@@ -6,9 +6,7 @@ export async function GET() {
   try {
     const docRef = doc(db, "daily-jobs", "heYcdbo5cq8vOlROMhXa")
     const docSnap = await getDoc(docRef)
-    console.log("running")
     if (docSnap.exists()) {
-      console.log(docSnap)
       return NextResponse.json(docSnap.data())
     } else {
       return NextResponse.json({ error: "Document does not exist" })
