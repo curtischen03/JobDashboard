@@ -35,7 +35,6 @@ const Footer = ({
     url: "/",
   },
   className,
-  tagline = "Components made easy.",
   menuItems = [],
   copyright = "© 2026 Job Dashboard. All rights reserved.",
   bottomLinks = [
