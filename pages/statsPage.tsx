@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react"
 import { collection, query, where, getDocs } from "firebase/firestore"
 import { db } from "@/utils/firebase"
 import { useAuth } from "@/context/AuthContext"
-
+//@ts-ignore
 import CalendarHeatmap from "react-calendar-heatmap"
 import { Tooltip } from "react-tooltip"
 import "react-calendar-heatmap/dist/styles.css"
