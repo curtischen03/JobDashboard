@@ -13,6 +13,7 @@ import "react-tooltip/dist/react-tooltip.css"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button" // Assuming you have shadcn button
 import { Briefcase, Calendar, TrendingUp, ArrowRightToLine } from "lucide-react"
+import { MagicCard } from "@/components/ui/magic-card"
 const toLocalISOString = (date: Date) => {
   const y = date.getFullYear()
   const m = String(date.getMonth() + 1).padStart(2, "0")
@@ -120,50 +121,77 @@ export default function StatsPage() {
         </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-        <Card className="border-border/50 shadow-none">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
+      {/* 1. Use grid and items-stretch to ensure all cards have the same height */}
+      <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Card 1 */}
+        <MagicCard
+          className="flex h-full flex-col rounded-xl border-border/50 pt-5 shadow-none"
+          mode="orb"
+          glowFrom="#ffffff"
+          glowTo="#e8e8e8"
+        >
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-[10px] font-medium tracking-wider text-muted-foreground uppercase sm:text-xs">
               Total
             </CardTitle>
             <Briefcase className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{totalApplied}</div>
+          <CardContent className="pt-0 pb-6">
+            <div className="text-2xl font-bold tabular-nums">
+              {totalApplied}
+            </div>
           </CardContent>
-        </Card>
-        <Card className="border-border/50 shadow-none">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
+        </MagicCard>
+
+        {/* Card 2 - Removed the manual 'py-7' that was causing the height mismatch */}
+        <MagicCard
+          className="flex h-full flex-col rounded-xl border-border/50 pt-5 shadow-none"
+          mode="orb"
+          glowFrom="#ffffff"
+          glowTo="#e8e8e8"
+        >
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-[10px] font-medium tracking-wider text-muted-foreground uppercase sm:text-xs">
               Avg / Active Day
             </CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
+          <CardContent className="pt-0 pb-6">
+            <div className="text-2xl font-bold tabular-nums">
               {averageAppliesPerDay.toFixed(1)}
             </div>
           </CardContent>
-        </Card>
-        <Card className="border-border/50 shadow-none sm:col-span-2 md:col-span-1">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
+        </MagicCard>
+
+        {/* Card 3 */}
+        <MagicCard
+          className="flex h-full flex-col rounded-xl border-border/50 pt-5 shadow-none"
+          mode="orb"
+          glowFrom="#ffffff"
+          glowTo="#e8e8e8"
+        >
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-[10px] font-medium tracking-wider text-muted-foreground uppercase sm:text-xs">
               Active Days
             </CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
+            <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
+          <CardContent className="pt-0 pb-6">
+            <div className="text-2xl font-bold tabular-nums">
               {heatmapData.filter((d) => d.count > 0).length}
             </div>
           </CardContent>
-        </Card>
+        </MagicCard>
       </div>
-
-      <Card className="overflow-hidden border-border/50 shadow-none">
+      <MagicCard
+        className="overflow-hidden rounded-xl border-border/50 py-7 shadow-none"
+        mode="orb"
+        glowFrom="#ffffff"
+        glowTo="#e8e8e8"
+      >
         <CardHeader className="flex flex-row items-center justify-between">
           <div className="space-y-1">
-            <CardTitle className="text-lg">Activity Heatmap</CardTitle>
+            <CardTitle className="pb-5 text-lg">Activity Heatmap</CardTitle>
           </div>
           <Button
             variant="outline"
@@ -225,7 +253,7 @@ export default function StatsPage() {
             </div>
           </div>
         </CardContent>
-      </Card>
+      </MagicCard>
 
       <style jsx global>{`
         .react-calendar-heatmap .color-empty {
