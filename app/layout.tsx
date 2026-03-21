@@ -9,6 +9,7 @@ import { onAuthStateChanged, User } from "firebase/auth"
 import { auth } from "@/utils/firebase"
 import React, { useState, useEffect } from "react"
 import { AuthProvider } from "@/context/AuthContext"
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -39,6 +40,9 @@ export default function RootLayout({
       <body>
         <AuthProvider>
           <Navbar />
+          <div className="container mx-auto mt-3 pl-4">
+            <AnimatedThemeToggler />
+          </div>
           <ThemeProvider>{children}</ThemeProvider>
           <Footer />
         </AuthProvider>

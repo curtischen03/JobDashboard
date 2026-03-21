@@ -116,9 +116,7 @@ export function JobTable({ jobData }: JobTableProps) {
                 <span className="mb-1 block text-[10px] tracking-wider text-gray-400 uppercase sm:hidden">
                   Employer
                 </span>
-                <div className="truncate text-sm text-gray-600 sm:text-base sm:text-slate-900">
-                  {job.employer_name}
-                </div>
+                <div className="block w-full truncate">{job.employer_name}</div>
               </TableCell>
 
               {/* Button Cell */}

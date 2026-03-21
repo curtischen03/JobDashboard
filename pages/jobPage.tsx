@@ -44,9 +44,7 @@ export default function JobPage() {
   return (
     <div className="container mx-auto my-8">
       <header className="mb-8">
-        <h1 className="px-4 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
-          Job Page
-        </h1>
+        <h1 className="my-6 px-4 text-3xl font-bold">Applied Jobs</h1>
         {updatedAt && (
           <p className="mt-2 px-4 text-xs text-gray-500 italic md:text-sm">
             Last updated: {updatedAt} PST
@@ -60,9 +58,7 @@ export default function JobPage() {
         </h2>
       )}
 
-      <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-        <JobTable jobData={jobData} />
-      </div>
+      <JobTable jobData={jobData} />
     </div>
   )
 }
