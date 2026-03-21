@@ -130,12 +130,12 @@ export function JobTable({ jobData }: JobTableProps) {
                 >
                   <Button
                     className={`h-10 w-full text-sm font-semibold transition-all sm:w-auto ${
-                      isApplied
+                      isApplied || !isHome
                         ? "cursor-default bg-green-700 text-white hover:bg-green-500"
                         : "border border-slate-200 bg-white text-slate-900 hover:bg-slate-900 hover:text-white"
                     }`}
                   >
-                    {isApplied ? "Applied" : "Apply"}
+                    {isApplied || !isHome ? "Applied" : "Apply"}
                   </Button>
                 </a>
               </TableCell>
